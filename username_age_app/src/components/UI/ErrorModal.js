@@ -36,7 +36,7 @@ const ErrorModal = (props) => {
                     title={props.title}
                     message={props.message}
                     onErrorHandler={props.onErrorHandler} />,
-                document.getElementById('overlay-root'))} 
+                document.getElementById('overlay-root'))}
         </React.Fragment >
     );
 };
