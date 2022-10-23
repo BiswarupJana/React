@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React,{useState, useRef} from 'react';
 import './App.css';
+import ConfirmationModal from './component/confirmationModal';
 
 function App() {
+
+  const[open, setOpen]=useState(false);
+  const modalRef= useRef();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <button onClick={()=>setOpen(true)}>Open</button>
+    <button onClick={()=>modalRef.current.focusCloseBtn()}>Focus Close</button>
+    <button onClick={()=>modalRef.current.focusConfirmBtn()}>Focus Confirm</button>
+    <button onClick={()=>modalRef.current.focusDenyBtn()}>Focus Deny</button>
+    <ConfirmationModal
+    ref={modalRef}
+    isOpen={open}
+    onClose={()=>setOpen(false)}
+    />
+    </>
   );
 }
 
