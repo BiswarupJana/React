@@ -1,5 +1,5 @@
 import classes from './CartItem.module.css';
-// import sashi from '../../assets/download.jpeg';
+
 
 const CartItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;

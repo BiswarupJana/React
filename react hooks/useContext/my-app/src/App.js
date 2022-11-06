@@ -1,31 +1,21 @@
-import { useReducer } from "react";
+import { useState } from "react";
+import './App.css'
+import Button from "./components/UI/Button";
+import DemoOutput from "./components/Demo/DemoOutput";
 
-const initialState = {count: 0};
+function App(){
+  const[showParagraph, setShowParagraph]=useState(false);
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
-    default:
-      throw new Error();
+  const toggleParagraphHandler=()=>{
+    setShowParagraph((prevShowParagra)=>!prevShowParagra);
   }
-}
 
-function App() {
-  const [ok, dispatch] = useReducer(reducer, initialState);
-  console.log(ok);
-  return (
-    <>
-      Count: {ok.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
-      
-    </>
-  );
+  return <div className='app'>
+    <h1>Hi there!</h1>
+    <DemoOutput  show={showParagraph}/>
+    <Button onClick={toggleParagraphHandler}>Toggle Paragraph</Button>
+  </div>
 }
-
 
 
 export default App;
