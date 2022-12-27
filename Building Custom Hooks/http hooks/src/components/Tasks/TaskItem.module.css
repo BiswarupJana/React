@@ -8,3 +8,11 @@
 .task:last-of-type {
   border-bottom: none;
 }
+
+li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
