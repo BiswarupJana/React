@@ -5,6 +5,11 @@
     animation: meals-appear is ease-out forwards;
 }
 
+.MealsLoading{
+    text-align: center;
+    color: black;
+}
+
 
 .meals ul {
     list-style: none;
