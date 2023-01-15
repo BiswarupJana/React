@@ -75,7 +75,7 @@ const AvailableMeals = () => {
         </Card>
     </section>
 
-}};
+}}
 
 
 
