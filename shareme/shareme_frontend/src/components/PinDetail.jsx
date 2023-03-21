@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import { MdDownloadForOffline } from 'react-icons/md';
 
-const PinDetail = () => {
+const PinDetail = ({user}) => {
   return (
     <div>
       PinDetail
