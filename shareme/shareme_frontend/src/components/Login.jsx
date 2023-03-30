@@ -16,7 +16,7 @@ const Login = () => {
       _id: profileData?.googleId,
       _type: 'user',
       userName: profileData?.name,
-      image: profileData.imageUrl,
+      image: profileData?.imageUrl,
     }
     
     client.createIfNotExists(doc)
