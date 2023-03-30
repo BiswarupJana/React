@@ -8,23 +8,26 @@ import { client } from '../client';
 
 const Login = () => {
   const navigate =useNavigate();
-  
   const responseGoogle = (response) => {
     localStorage.setItem('user', JSON.stringify(response.profileObj));
-    const {name, googleId, imageUrl }=response.profileObj;
+    // const { googleId, imageUrl, name}=response.profileObj;
+    const profileData =response?.profileObj;
     const doc ={
-      _id: googleId,
+      _id: profileData?.googleId,
       _type: 'user',
-      userName: name,
-      image: imageUrl,
+      userName: profileData?.name,
+      image: profileData.imageUrl,
     }
-
+    
     client.createIfNotExists(doc)
     .then(()=>{
       navigate('/',{replace: true})
     })
     console.log(response.profileObj);
   };
+  const onFailure = (res)=>{
+    console.log("login Failed!", res);
+  }
   return (
     <div className="flex justify-center items-center flex-col h-screen">
       <div className="relative w-full h-full">
@@ -54,7 +57,7 @@ const Login = () => {
                 </button>
               )}
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              onFailure={onFailure}
               cookiePolicy={'single_host_origin'}
             />
           </div>
