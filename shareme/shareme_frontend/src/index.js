@@ -29,3 +29,21 @@ root.render(
 //     </Router>,
 //     document.getElementById('root')
 // );
+
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { GoogleOAuthProvider } from '@react-oauth/google';
+// import App from './App';
+// import './index.css';
+
+// ReactDOM.render(
+//     <GoogleOAuthProvider clientId="539140170587-7lsppkhhc782705ltshh1qupe6gcfn38.apps.googleusercontent.com">
+//         <React.StrictMode>
+//             <App />
+//         </React.StrictMode>
+//     </GoogleOAuthProvider>,
+//     document.getElementById('root')
+// );

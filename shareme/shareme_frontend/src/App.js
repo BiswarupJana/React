@@ -9,12 +9,14 @@ const clientId = process.env.REACT_APP_GOOGLE_API_TOKEN;
 const App = () => {
   const navigate = useNavigate();
   
-  useEffect(() => {
-    const user= fetchUser();
-    if(!user) navigate('/login');
-  }, [])
+  // useEffect(() => {
+   
+  // }, [])
   
     useEffect(() => {
+      const user= fetchUser();
+      if(!user) navigate('/login');
+
       function start() {
         gapi.client.init({
           clientId: clientId,
