@@ -1,2 +1,2 @@
 # React
-ract project and courses
+react project and courses
