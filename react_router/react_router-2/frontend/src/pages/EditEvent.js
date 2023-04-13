@@ -8,9 +8,11 @@ const EditEventPage = () => {
   return (
     <>
 
-      <EventForm event={event} />
+      <EventForm method="PATCH" event={event} />
     </>
   )
 }
 
-export default EditEventPage
+export default EditEventPage;
+
+
