@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
 import { Await, defer, json, useLoaderData } from 'react-router-dom';
-import EventsList from '../components/EventsList'
+import EventsList from '../components/EventsList';
 import Spinner from '../components/Spinner';
 
 const EventsPage = () => {
   const { events } = useLoaderData();
-  console.log(events);
   return (
-    <Suspense fallback={<p style={{textAlign:'center'}}>Loading ...</p>}>
+    <Suspense fallback={<Spinner />}>
       <Await resolve={events}>
         {(loadedEvents) => 
           <EventsList events={loadedEvents} />
@@ -38,7 +37,7 @@ async function loadEvents() {
 }
 
 export function loader() {
-  defer({
+  return defer({
     events: loadEvents(),
   });
 }
