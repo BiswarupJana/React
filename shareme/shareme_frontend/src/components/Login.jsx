@@ -7,7 +7,7 @@ import logo from '../assets/logowhite.png';
 import { client } from '../client';
 
 const Login = () => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const responseGoogle = (response) => {
     localStorage.setItem('user', JSON.stringify(response.profileObj));
     // const { googleId, imageUrl, name}=response.profileObj;

@@ -8,26 +8,21 @@ import { gapi } from "gapi-script";
 const clientId = process.env.REACT_APP_GOOGLE_API_TOKEN;
 const App = () => {
   const navigate = useNavigate();
-  
-  // useEffect(() => {
-   
-  // }, [])
+
   
     useEffect(() => {
-      const user= fetchUser();
-      if(!user) navigate('/login');
+      const user = fetchUser();
+      if (!user) navigate("/login");
 
       function start() {
         gapi.client.init({
           clientId: clientId,
-          scope: ""
-        })
-      };
-      gapi?.load('client:auth2', start)
-    },[]);
+          scope: "",
+        });
+      }
+      gapi?.load("client:auth2", start);
+    }, []);
 
-
-   
 
     return (
       <Routes>
