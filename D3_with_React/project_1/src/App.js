@@ -1,6 +1,13 @@
 import React ,{useRef, useEffect, useState} from 'react';
 import './App.css';
-import { select, line, curveCardinal, axisBottom } from "d3";
+import {
+  select,
+  line,
+  curveCardinal,
+  axisRight,
+  axisBottom,
+  scaleLinear,
+} from "d3";
 
 function App() {
   const [data, setData] = useState([25, 30, 45, 60, 20, 65, 75]);
@@ -8,10 +15,30 @@ function App() {
   useEffect(() => {
     // console.log(svgRef);
     const svg = select(svgRef.current);
-    const xAxis = axisBottom(svg);
+    const xScale = scaleLinear()
+      .domain([0, data.length - 1])
+      .range([0, 300]);
+
+    const yScale = scaleLinear().domain([0, 150]).range([150, 0]);
+
+    const xAxis = axisBottom(xScale)
+      .ticks(data.length)
+      .tickFormat((index) => index + 1);
+    svg
+      .selectAll(".x-axis")
+      .style("transform", "translateY(150px)")
+      .call(xAxis);
+
+    const yAxis = axisRight(yScale);
+    svg
+      .selectAll(".y-axis")
+      .style("transform", "translateX(300px)")
+      .call(yAxis);
+
+    // generates the "d" attribute of a path element
     const myLine = line()
-      .x((value, index) => index * 50)
-      .y((value) => 150 - value)
+      .x((value, index) => xScale(index))
+      .y(yScale)
       .curve(curveCardinal);
 
     /////circle //
@@ -26,17 +53,26 @@ function App() {
 
     ////line////
     svg
-      .selectAll("path")
+      .selectAll(".line")
       .data([data])
       .join("path")
-      .attr("d", (value) => myLine(value))
+      .attr("class", "line")
+      .attr("d", myLine)
       .attr("fill", "none")
       .attr("stroke", "blue");
   }, [data]);
 
   return (
     <React.Fragment>
-      <svg ref={svgRef}></svg>
+      <div>
+        <svg ref={svgRef}>
+          <g className="x-axis" />
+          <g className="y-axis" />
+        </svg>
+      </div>
+      <br />
+      <br />
+      <br />
       <br />
       <button onClick={() => setData(data.map((value) => value + 5))}>
         Update data
