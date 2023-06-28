@@ -39,14 +39,22 @@ const BarChart = () => {
       .attr("x", (value, index) => xScale(index))
       .attr("y", -150)
       .attr("width", xScale.bandwidth())
+      .on("mouseenter", (value, index) => {
+        svg
+          .selectAll(".tooltip")
+          .data([value])
+          .join("text")
+          .attr("class", "tooltip")
+          .text(value);
+      })
       .transition()
       .attr("fill", colorScale)
       .attr("height", (value) => 150 - yScale(value));
   }, [data]);
   return (
-    <React.Fragment className={classes}>
+    <React.Fragment>
       <div>
-        <svg ref={svgRef}>
+        <svg ref={svgRef} className={classes.svg}>
           <g className="x-axis" />
           <g className="y-axis" />
         </svg>
@@ -55,11 +63,23 @@ const BarChart = () => {
       <br />
       <br />
       <br />
-      <button onClick={() => setData(data.map((value) => value + 5))}>
+      <button
+        onClick={() => setData(data.map((value) => value + 5))}
+        className={classes.button}
+      >
         Update data
       </button>
-      <button onClick={() => setData(data.filter((value) => value <= 35))}>
+      <button
+        onClick={() => setData(data.filter((value) => value <= 35))}
+        className={classes.button}
+      >
         Filter Data
+      </button>
+      <button
+        onClick={() => setData([...data, Math.round(Math.random() * 100)])}
+        className={classes.button}
+      >
+        Add data
       </button>
     </React.Fragment>
   );

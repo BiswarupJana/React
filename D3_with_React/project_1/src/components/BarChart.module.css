@@ -1,0 +1,11 @@
+.svg {
+    background: #eee;
+    overflow: visible;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+.button {
+    margin-bottom: 5px;
+    width: 100px;
+  }
