@@ -2,12 +2,31 @@ import React, { useRef, useEffect, useState } from "react";
 import { select, axisRight, axisBottom, scaleLinear, scaleBand } from "d3";
 import classes from "./BarChart.module.css";
 
+const useResizeObserver = (ref) => {
+  const [dimensions, setDimensions] = useState(null);
+  useEffect(() => {
+    const observeTarget = ref.current;
+    const resizeObserver = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        setDimensions(entry.contentRect);
+      });
+    });
+    resizeObserver.observe(observeTarget);
+    return () => {
+      resizeObserver.unobserve(observeTarget);
+    };
+  }, [ref]);
+  return dimensions;
+};
 const BarChart = () => {
   const [data, setData] = useState([25, 30, 45, 60, 20, 65, 75]);
   const svgRef = useRef();
+  const wrapperRef = useRef();
+  const dimensions = useResizeObserver(svgRef);
   // will be called initially and on every data change
   useEffect(() => {
     const svg = select(svgRef.current);
+    console.log(dimensions);
 
     // scales
     const xScale = scaleBand()
@@ -57,15 +76,16 @@ const BarChart = () => {
       .transition()
       .attr("fill", colorScale)
       .attr("height", (value) => 150 - yScale(value));
-  }, [data]);
+  }, [data, dimensions]);
   return (
-    <React.Fragment>
+    <div className={classes.total} ref={wrapperRef}>
       <div>
         <svg ref={svgRef} className={classes.svg}>
           <g className="x-axis" />
           <g className="y-axis" />
         </svg>
       </div>
+
       <br />
       <br />
       <br />
@@ -88,7 +108,7 @@ const BarChart = () => {
       >
         Add data
       </button>
-    </React.Fragment>
+    </div>
   );
 };
 

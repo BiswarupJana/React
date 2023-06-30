@@ -6,7 +6,7 @@ import BarChart from "./components/BarChart";
 function App() {
   return (
     <React.Fragment>
-      <LineGraph />
+      {/* <LineGraph /> */}
       <BarChart />
     </React.Fragment>
   );

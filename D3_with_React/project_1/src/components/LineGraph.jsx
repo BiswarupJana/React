@@ -62,9 +62,9 @@ const LineGraph = () => {
   }, [data]);
 
   return (
-    <React.Fragment className={classes}>
+    <React.Fragment>
       <div>
-        <svg ref={svgRef}>
+        <svg ref={svgRef} className={classes.svg}>
           <g className="x-axis" />
           <g className="y-axis" />
         </svg>
