@@ -1,12 +1,1 @@
-{
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
-}
+{"events":[{"title":"test","image":"https://upload.wikimedia.org/wikipedia/commons/b/bb/Shades_of_Abu_Dhabi_Midnight.jpg","date":"2023-10-10","description":"ok","id":"e11c4ca2-9f12-445d-8e1e-54942bda3b5e"}],"users":[{"email":"anwesabiswasce@gmail.com","password":"$2a$12$K0MJz24xkuOSXq7zjHpv/uqCjPmi/bSnwLMudKjY4Ofu4RamddJ8.","id":"6dafee8a-a3b0-4f3b-b3d7-7981f30b2b90"}]}
