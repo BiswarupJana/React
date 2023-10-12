@@ -18,6 +18,7 @@ const Login = () => {
       userName: profileData?.name,
       image: profileData?.imageUrl,
     }
+    // navigate('/',{replace: true})
     
     client.createIfNotExists(doc)
     .then(()=>{
@@ -26,6 +27,7 @@ const Login = () => {
     console.log(response.profileObj);
   };
   const onFailure = (res)=>{
+    // navigate('/',{replace: true})
     console.log("login Failed!", res);
   }
   return (
